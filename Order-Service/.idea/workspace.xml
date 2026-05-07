@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="355fc608-482f-4b00-b152-1f461f2e1913" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/src/main/java/dos/project/DosApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Backend/Dos/src/test/java/dos/project/DosApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="355fc608-482f-4b00-b152-1f461f2e1913" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +49,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.DosApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "saif",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Said neirat/Downloads/Dos_App/Order-Service",
     "node.js.detected.package.eslint": "true",
@@ -95,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1778166793281</updated>
-      <workItem from="1778166793912" duration="385000" />
+      <workItem from="1778166793912" duration="931000" />
     </task>
     <servers />
   </component>
