@@ -1,12 +1,12 @@
 package org.example.frontendservice.Service;
 
-
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.http.ResponseEntity;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class FrontendService {
@@ -19,25 +19,51 @@ public class FrontendService {
     @Value("${order.base-url}")
     private String orderBaseUrl;
 
+    // 🔥 Cache
+    private final Map<Integer, Object> cache = new ConcurrentHashMap<>();
+
     public FrontendService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    // SEARCH
+    // 🔵 SEARCH
     public Object search(String topic) {
         String url = catalogBaseUrl + "/search/" + topic;
         return restTemplate.getForObject(url, Object.class);
     }
 
-    // INFO
+    // 🔵 INFO + CACHE
     public Object info(int id) {
+
+        // 🔥 Check cache
+        if (cache.containsKey(id)) {
+            System.out.println("Cache HIT for book " + id);
+            return cache.get(id);
+        }
+
+        System.out.println("Cache MISS for book " + id);
+
         String url = catalogBaseUrl + "/info/" + id;
-        return restTemplate.getForObject(url, Object.class);
+        Object response = restTemplate.getForObject(url, Object.class);
+
+        // 🔥 Save in cache
+        cache.put(id, response);
+
+        return response;
     }
 
-    // PURCHASE
+    // 🔵 PURCHASE + INVALIDATE CACHE
     public ResponseEntity<?> purchase(int id) {
+
         String url = orderBaseUrl + "/purchase/" + id;
-        return restTemplate.postForEntity(url, null, Object.class);
+
+        ResponseEntity<?> response =
+                restTemplate.postForEntity(url, null, Object.class);
+
+        // 🔥 invalidate cache
+        cache.remove(id);
+        System.out.println("Cache invalidated for book " + id);
+
+        return response;
     }
 }
