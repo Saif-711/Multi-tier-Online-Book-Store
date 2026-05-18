@@ -32,19 +32,12 @@ public class CatalogService {
         if (request == null
                 || (request.getQuantity() == null
                 && request.getPrice() == null
-                && request.getQuantityDelta() == null)) {
-            throw new IllegalArgumentException("At least one of quantity, price, or quantityDelta must be provided");
+                )) {
+            throw new IllegalArgumentException("At least one of quantity, price must be provided");
         }
 
         if (bookRepository.findById(id).isEmpty()) {
             throw new BookNotFoundException("Book not found: " + id);
-        }
-
-        if (request.getQuantityDelta() != null) {
-            int updated = bookRepository.applyQuantityDelta(id, request.getQuantityDelta());
-            if (updated == 0) {
-                throw new IllegalArgumentException("Unable to apply quantity delta for book " + id);
-            }
         }
 
         if (request.getQuantity() != null) {
