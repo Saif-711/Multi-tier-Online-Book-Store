@@ -30,10 +30,8 @@ public class CatalogService {
 
     public BookInfoResult update(int id, UpdateRequest request) {
         if (request == null
-                || (request.getQuantity() == null
-                && request.getPrice() == null
-                )) {
-            throw new IllegalArgumentException("At least one of quantity, price must be provided");
+                || (request.getQuantity() == null && request.getPrice() == null)) {
+            throw new IllegalArgumentException("At least one of quantity or price must be provided");
         }
 
         if (bookRepository.findById(id).isEmpty()) {
