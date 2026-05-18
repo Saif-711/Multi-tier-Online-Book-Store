@@ -22,7 +22,8 @@ public class FrontendService {
     private String orderUrls;
 
     // Cache
-    private final Map<Integer, Object> cache = new ConcurrentHashMap<>();
+    private final Map<Integer, Object> cache =
+            new ConcurrentHashMap<>();
 
     // Round Robin counters
     private int catalogIndex = 0;
@@ -38,26 +39,40 @@ public class FrontendService {
 
     private String getCatalogServer() {
 
-        String[] urls = catalogUrls.split(",");
+        String[] urls =
+                catalogUrls.split(",");
 
-        String selected = urls[catalogIndex];
+        String selected =
+                urls[catalogIndex];
 
-        catalogIndex = (catalogIndex + 1) % urls.length;
+        catalogIndex =
+                (catalogIndex + 1)
+                        % urls.length;
 
-        System.out.println("Using Catalog Server: " + selected);
+        System.out.println(
+                "Using Catalog Server: "
+                        + selected
+        );
 
         return selected;
     }
 
     private String getOrderServer() {
 
-        String[] urls = orderUrls.split(",");
+        String[] urls =
+                orderUrls.split(",");
 
-        String selected = urls[orderIndex];
+        String selected =
+                urls[orderIndex];
 
-        orderIndex = (orderIndex + 1) % urls.length;
+        orderIndex =
+                (orderIndex + 1)
+                        % urls.length;
 
-        System.out.println("Using Order Server: " + selected);
+        System.out.println(
+                "Using Order Server: "
+                        + selected
+        );
 
         return selected;
     }
@@ -68,47 +83,109 @@ public class FrontendService {
 
     public Object search(String topic) {
 
-        String url = getCatalogServer()
-                + "/search/" + topic;
+        long start =
+                System.currentTimeMillis();
 
-        return restTemplate.getForObject(url, Object.class);
-    }
-
-    // ==========================
-    // INFO + CACHE
-    // ==========================
-
-    public Object info(int id) {
-
-        // cache hit
-        if (cache.containsKey(id)) {
-
-            System.out.println("Cache HIT for book " + id);
-
-            return cache.get(id);
-        }
-
-        System.out.println("Cache MISS for book " + id);
-
-        String url = getCatalogServer()
-                + "/info/" + id;
+        String url =
+                getCatalogServer()
+                        + "/search/"
+                        + topic;
 
         Object response =
-                restTemplate.getForObject(url, Object.class);
+                restTemplate.getForObject(
+                        url,
+                        Object.class
+                );
 
-        cache.put(id, response);
+        long end =
+                System.currentTimeMillis();
+
+        System.out.println(
+                "Search response time: "
+                        + (end - start)
+                        + " ms"
+        );
 
         return response;
     }
 
     // ==========================
-    // PURCHASE + INVALIDATE CACHE
+    // INFO + CACHE + TIMING
+    // ==========================
+
+    public Object info(int id) {
+
+        long start =
+                System.currentTimeMillis();
+
+        // Cache HIT
+        if (cache.containsKey(id)) {
+
+            System.out.println(
+                    "Cache HIT for book "
+                            + id
+            );
+
+            Object result =
+                    cache.get(id);
+
+            long end =
+                    System.currentTimeMillis();
+
+            System.out.println(
+                    "Response time: "
+                            + (end - start)
+                            + " ms"
+            );
+
+            return result;
+        }
+
+        // Cache MISS
+        System.out.println(
+                "Cache MISS for book "
+                        + id
+        );
+
+        String url =
+                getCatalogServer()
+                        + "/info/"
+                        + id;
+
+        Object response =
+                restTemplate.getForObject(
+                        url,
+                        Object.class
+                );
+
+        cache.put(id, response);
+
+        long end =
+                System.currentTimeMillis();
+
+        System.out.println(
+                "Response time: "
+                        + (end - start)
+                        + " ms"
+        );
+
+        return response;
+    }
+
+    // ==========================
+    // PURCHASE + INVALIDATION
+    // + TIMING
     // ==========================
 
     public ResponseEntity<?> purchase(int id) {
 
-        String url = getOrderServer()
-                + "/purchase/" + id;
+        long start =
+                System.currentTimeMillis();
+
+        String url =
+                getOrderServer()
+                        + "/purchase/"
+                        + id;
 
         ResponseEntity<?> response =
                 restTemplate.postForEntity(
@@ -117,10 +194,21 @@ public class FrontendService {
                         Object.class
                 );
 
+        // invalidate cache
         cache.remove(id);
 
         System.out.println(
-                "Cache invalidated for book " + id
+                "Cache invalidated for book "
+                        + id
+        );
+
+        long end =
+                System.currentTimeMillis();
+
+        System.out.println(
+                "Purchase response time: "
+                        + (end - start)
+                        + " ms"
         );
 
         return response;
