@@ -13,56 +13,115 @@ public class FrontendService {
 
     private final RestTemplate restTemplate;
 
-    @Value("${catalog.base-url}")
-    private String catalogBaseUrl;
+    // Catalog replicas
+    @Value("${catalog.urls}")
+    private String catalogUrls;
 
-    @Value("${order.base-url}")
-    private String orderBaseUrl;
+    // Order replicas
+    @Value("${order.urls}")
+    private String orderUrls;
 
-    // 🔥 Cache
+    // Cache
     private final Map<Integer, Object> cache = new ConcurrentHashMap<>();
+
+    // Round Robin counters
+    private int catalogIndex = 0;
+    private int orderIndex = 0;
 
     public FrontendService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    // 🔵 SEARCH
+    // ==========================
+    // ROUND ROBIN HELPERS
+    // ==========================
+
+    private String getCatalogServer() {
+
+        String[] urls = catalogUrls.split(",");
+
+        String selected = urls[catalogIndex];
+
+        catalogIndex = (catalogIndex + 1) % urls.length;
+
+        System.out.println("Using Catalog Server: " + selected);
+
+        return selected;
+    }
+
+    private String getOrderServer() {
+
+        String[] urls = orderUrls.split(",");
+
+        String selected = urls[orderIndex];
+
+        orderIndex = (orderIndex + 1) % urls.length;
+
+        System.out.println("Using Order Server: " + selected);
+
+        return selected;
+    }
+
+    // ==========================
+    // SEARCH
+    // ==========================
+
     public Object search(String topic) {
-        String url = catalogBaseUrl + "/search/" + topic;
+
+        String url = getCatalogServer()
+                + "/search/" + topic;
+
         return restTemplate.getForObject(url, Object.class);
     }
 
-    // 🔵 INFO + CACHE
+    // ==========================
+    // INFO + CACHE
+    // ==========================
+
     public Object info(int id) {
 
-        // 🔥 Check cache
+        // cache hit
         if (cache.containsKey(id)) {
+
             System.out.println("Cache HIT for book " + id);
+
             return cache.get(id);
         }
 
         System.out.println("Cache MISS for book " + id);
 
-        String url = catalogBaseUrl + "/info/" + id;
-        Object response = restTemplate.getForObject(url, Object.class);
+        String url = getCatalogServer()
+                + "/info/" + id;
 
-        // 🔥 Save in cache
+        Object response =
+                restTemplate.getForObject(url, Object.class);
+
         cache.put(id, response);
 
         return response;
     }
 
-    // 🔵 PURCHASE + INVALIDATE CACHE
+    // ==========================
+    // PURCHASE + INVALIDATE CACHE
+    // ==========================
+
     public ResponseEntity<?> purchase(int id) {
 
-        String url = orderBaseUrl + "/purchase/" + id;
+        String url = getOrderServer()
+                + "/purchase/" + id;
 
         ResponseEntity<?> response =
-                restTemplate.postForEntity(url, null, Object.class);
+                restTemplate.postForEntity(
+                        url,
+                        null,
+                        Object.class
+                );
 
-        // 🔥 invalidate cache
         cache.remove(id);
-        System.out.println("Cache invalidated for book " + id);
+
+        System.out.println(
+                "Cache invalidated for book " + id
+        );
 
         return response;
     }
