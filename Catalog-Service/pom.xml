@@ -47,7 +47,6 @@
         </dependency>
 
 
-        <!-- Add Sqlite Dependency -->
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
@@ -58,10 +57,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
+    <!--        <dependency>-->
+    <!--            <groupId>org.springframework.boot</groupId>-->
+    <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+    <!--        </dependency>-->
 
-
-
-        
 
     </dependencies>
 
