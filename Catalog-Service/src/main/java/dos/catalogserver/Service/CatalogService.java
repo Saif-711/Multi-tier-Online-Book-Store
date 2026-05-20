@@ -25,6 +25,16 @@ public class CatalogService {
         return toInfoResult(book);
     }
 
+    public BookInfoResult decrementStock(int id) {
+        if (bookRepository.findById(id).isEmpty()) {
+            throw new BookNotFoundException(String.valueOf(id));
+        }
+        if (bookRepository.decrementQuantity(id) == 0) {
+            throw new IllegalArgumentException("Item out of stock");
+        }
+        return findById(id);
+    }
+
     public BookInfoResult update(int id, UpdateRequest request) {
         if (request == null
                 || (request.getQuantity() == null && request.getPrice() == null)) {

@@ -40,16 +40,8 @@ public class BookRepository {
         jdbcTemplate.update(sql, price, id);
     }
 
-   /* public int decrementQuantity(int id) {
+    public int decrementQuantity(int id) {
         String sql = "UPDATE books SET quantity = quantity - 1 WHERE id = ? AND quantity > 0";
         return jdbcTemplate.update(sql, id);
     }
-
-    public int applyQuantityDelta(int id, int delta) {
-        if (delta == -1) {
-            return decrementQuantity(id);
-        }
-        String sql = "UPDATE books SET quantity = quantity + ? WHERE id = ? AND quantity + ? >= 0";
-        return jdbcTemplate.update(sql, delta, id, delta);
-    }*/
 }

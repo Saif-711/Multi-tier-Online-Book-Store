@@ -49,7 +49,7 @@ public class OrderService {
 
         CatalogBookInfo updated;
         try {
-            updated = catalogClient.decrementStock(id, info.getQuantity());
+            updated = catalogClient.decrementStock(id);
         } catch (CatalogServiceException ex) {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(Map.of("error", "Unable to complete purchase: " + ex.getMessage()));

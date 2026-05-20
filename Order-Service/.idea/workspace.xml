@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="355fc608-482f-4b00-b152-1f461f2e1913" name="Changes" comment="" />
+    <list default="true" id="355fc608-482f-4b00-b152-1f461f2e1913" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Catalog-Service/src/main/java/dos/catalogserver/Controller/CatalogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Catalog-Service/src/main/java/dos/catalogserver/Controller/CatalogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Catalog-Service/src/main/java/dos/catalogserver/Repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Catalog-Service/src/main/java/dos/catalogserver/Repository/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Catalog-Service/src/main/java/dos/catalogserver/Service/CatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Catalog-Service/src/main/java/dos/catalogserver/Service/CatalogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dos/project/Client/CatalogClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dos/project/Client/CatalogClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dos/project/Service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dos/project/Service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-service/src/main/java/org/example/frontendservice/Service/FrontendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-service/src/main/java/org/example/frontendservice/Service/FrontendService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,12 +38,12 @@
     &quot;assignee&quot;: &quot;Saif-711&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Saif-711/Multi-tier-Online-Book-Store&quot;,
-    &quot;accountId&quot;: &quot;56feed83-5bec-4265-ae4c-963c4f840130&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Saif-711/Multi-tier-Online-Book-Store.git",
+    "accountId": "913aed14-8beb-45a7-8fd2-edba638b3de2"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -99,8 +106,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17890.1" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17890.1" />
       </set>
     </attachedChunks>
   </component>
@@ -117,6 +124,7 @@
       <workItem from="1778779754101" duration="31000" />
       <workItem from="1779118018524" duration="6738000" />
       <workItem from="1779132900782" duration="6238000" />
+      <workItem from="1779286918032" duration="499000" />
     </task>
     <servers />
   </component>

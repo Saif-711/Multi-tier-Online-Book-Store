@@ -5,9 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 @Service
 public class FrontendService {
 
@@ -20,10 +17,6 @@ public class FrontendService {
     // Order replicas
     @Value("${order.urls}")
     private String orderUrls;
-
-    // Cache
-    private final Map<Integer, Object> cache =
-            new ConcurrentHashMap<>();
 
     // Round Robin counters
     private int catalogIndex = 0;
@@ -110,42 +103,13 @@ public class FrontendService {
     }
 
     // ==========================
-    // INFO + CACHE + TIMING
+    // INFO + TIMING
     // ==========================
 
     public Object info(int id) {
 
         long start =
                 System.currentTimeMillis();
-
-        // Cache HIT
-        if (cache.containsKey(id)) {
-
-            System.out.println(
-                    "Cache HIT for book "
-                            + id
-            );
-
-            Object result =
-                    cache.get(id);
-
-            long end =
-                    System.currentTimeMillis();
-
-            System.out.println(
-                    "Response time: "
-                            + (end - start)
-                            + " ms"
-            );
-
-            return result;
-        }
-
-        // Cache MISS
-        System.out.println(
-                "Cache MISS for book "
-                        + id
-        );
 
         String url =
                 getCatalogServer()
@@ -157,8 +121,6 @@ public class FrontendService {
                         url,
                         Object.class
                 );
-
-        cache.put(id, response);
 
         long end =
                 System.currentTimeMillis();
@@ -173,8 +135,7 @@ public class FrontendService {
     }
 
     // ==========================
-    // PURCHASE + INVALIDATION
-    // + TIMING
+    // PURCHASE + TIMING
     // ==========================
 
     public ResponseEntity<?> purchase(int id) {
@@ -193,14 +154,6 @@ public class FrontendService {
                         null,
                         Object.class
                 );
-
-        // invalidate cache
-        cache.remove(id);
-
-        System.out.println(
-                "Cache invalidated for book "
-                        + id
-        );
 
         long end =
                 System.currentTimeMillis();

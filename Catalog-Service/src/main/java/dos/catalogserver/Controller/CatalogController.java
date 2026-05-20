@@ -29,4 +29,9 @@ public class CatalogController {
     public BookInfoResult update(@PathVariable int id, @RequestBody UpdateRequest request) {
         return service.update(id, request);
     }
+
+    @PostMapping("/decrement/{id}")
+    public BookInfoResult decrement(@PathVariable int id) {
+        return service.decrementStock(id);
+    }
 }
