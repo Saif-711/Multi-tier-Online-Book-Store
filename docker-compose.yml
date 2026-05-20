@@ -1,0 +1,36 @@
+services:
+  catalog:
+    build: ./Catalog-Service
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:sqlite:/app/data/catalog.db
+    volumes:
+      - catalog-data:/app/data
+
+  order:
+    build: ./Order-Service
+    ports:
+      - "8082:8082"
+    environment:
+      CATALOG_BASE_URL: http://catalog:8081
+      SPRING_DATASOURCE_URL: jdbc:sqlite:/app/data/orders.db
+    volumes:
+      - order-data:/app/data
+    depends_on:
+      - catalog
+
+  frontend:
+    build: ./frontend-service
+    ports:
+      - "8083:8083"
+    environment:
+      CATALOG_URLS: http://catalog:8081/api/catalog
+      ORDER_URLS: http://order:8082/api/order
+    depends_on:
+      - catalog
+      - order
+
+volumes:
+  catalog-data:
+  order-data:

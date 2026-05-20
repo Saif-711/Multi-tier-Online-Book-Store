@@ -62,6 +62,8 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <mainClass>dos.project.DosApplication</mainClass>
+                    <arguments>--server.port=8082</arguments>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

@@ -43,7 +43,7 @@ public class FrontendService {
                 catalogUrls.split(",");
 
         String selected =
-                urls[catalogIndex];
+                urls[catalogIndex].trim();
 
         catalogIndex =
                 (catalogIndex + 1)
@@ -63,7 +63,7 @@ public class FrontendService {
                 orderUrls.split(",");
 
         String selected =
-                urls[orderIndex];
+                urls[orderIndex].trim();
 
         orderIndex =
                 (orderIndex + 1)

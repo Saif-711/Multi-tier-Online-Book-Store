@@ -5,7 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="355fc608-482f-4b00-b152-1f461f2e1913" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Catalog-Service/src/main/java/dos/catalogserver/Service/CatalogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Catalog-Service/src/main/java/dos/catalogserver/Service/CatalogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Catalog-Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Catalog-Service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dos/project/Client/CatalogClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dos/project/Client/CatalogClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dos/project/DosApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dos/project/DosApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dos/project/Repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dos/project/Repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-service/src/main/java/org/example/frontendservice/Controller/FrontendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-service/src/main/java/org/example/frontendservice/Controller/FrontendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-service/src/main/java/org/example/frontendservice/Service/FrontendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-service/src/main/java/org/example/frontendservice/Service/FrontendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +45,12 @@
     &quot;assignee&quot;: &quot;Saif-711&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Saif-711/Multi-tier-Online-Book-Store",
-    "accountId": "56feed83-5bec-4265-ae4c-963c4f840130"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Saif-711/Multi-tier-Online-Book-Store&quot;,
+    &quot;accountId&quot;: &quot;56feed83-5bec-4265-ae4c-963c4f840130&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -57,26 +69,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.DosApplication (1).executor": "Run",
-    "Spring Boot.DosApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Said neirat/Downloads/Dos_App/Order-Service",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.DosApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DosApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Said neirat/Downloads/Dos_App/Order-Service&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Spring Boot.DosApplication (1)">
     <configuration name="DosApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="project" />

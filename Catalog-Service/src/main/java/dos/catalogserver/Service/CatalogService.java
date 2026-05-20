@@ -14,9 +14,6 @@ public class CatalogService {
     private BookRepository bookRepository;
 
     public List<BookSearchResult> findByTopic(String topic) {
-        if(bookRepository.findByTopic(topic).isEmpty()) {
-            throw new BookNotFoundException("No books found for topic: " + topic);
-        }
         return bookRepository.findByTopic(topic).stream()
                 .map(b -> new BookSearchResult(b.getId(), b.getTitle()))
                 .toList();
@@ -24,7 +21,7 @@ public class CatalogService {
 
     public BookInfoResult findById(int id) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new BookNotFoundException("Book not found: " + id));
+                .orElseThrow(() -> new BookNotFoundException(String.valueOf(id)));
         return toInfoResult(book);
     }
 
@@ -35,7 +32,7 @@ public class CatalogService {
         }
 
         if (bookRepository.findById(id).isEmpty()) {
-            throw new BookNotFoundException("Book not found: " + id);
+            throw new BookNotFoundException(String.valueOf(id));
         }
 
         if (request.getQuantity() != null) {

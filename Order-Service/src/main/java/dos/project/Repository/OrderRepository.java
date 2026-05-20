@@ -3,11 +3,8 @@ package dos.project.Repository;
 import dos.project.Model.OrderRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
-import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.time.Instant;
 
 @Repository
@@ -17,17 +14,16 @@ public class OrderRepository {
 
     public OrderRecord save(int bookId, String title) {
         String purchasedAt = Instant.now().toString();
-        String sql = "INSERT INTO orders (book_id, title, purchased_at) VALUES (?, ?, ?)";
-        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
-        jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, bookId);
-            ps.setString(2, title);
-            ps.setString(3, purchasedAt);
-            return ps;
-        }, keyHolder);
-        Number key = keyHolder.getKey();
-        int id = key != null ? key.intValue() : 0;
-        return new OrderRecord(id, bookId, title, purchasedAt);
+
+        // Insert the order row
+        String insertSql = "INSERT INTO orders (book_id, title, purchased_at) VALUES (?, ?, ?)";
+        jdbcTemplate.update(insertSql, bookId, title, purchasedAt);
+
+        // SQLite-safe way to get the last inserted ID — GeneratedKeyHolder
+        // does NOT work reliably with the SQLite JDBC driver.
+        String idSql = "SELECT last_insert_rowid()";
+        Integer id = jdbcTemplate.queryForObject(idSql, Integer.class);
+
+        return new OrderRecord(id != null ? id : 0, bookId, title, purchasedAt);
     }
 }

@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Catalog (8081)",
+      "request": "launch",
+      "mainClass": "dos.catalogserver.CatalogServerApplication",
+      "projectName": "Catalog-Server",
+      "args": "--server.port=8081"
+    },
+    {
+      "type": "java",
+      "name": "Order (8082)",
+      "request": "launch",
+      "mainClass": "dos.project.DosApplication",
+      "projectName": "project",
+      "args": "--server.port=8082"
+    },
+    {
+      "type": "java",
+      "name": "Frontend (8083)",
+      "request": "launch",
+      "mainClass": "org.example.frontendservice.FrontendServiceApplication",
+      "projectName": "frontend-service",
+      "args": "--server.port=8083"
+    }
+  ]
+}
