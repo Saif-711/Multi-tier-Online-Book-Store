@@ -6,7 +6,7 @@ services:
     environment:
       SPRING_DATASOURCE_URL: jdbc:sqlite:/app/data/catalog.db
     volumes:
-      - catalog-data:/app/data
+      - ./Catalog-Service/catalog.db:/app/data/catalog.db
 
   order:
     build: ./Order-Service
@@ -16,7 +16,7 @@ services:
       CATALOG_BASE_URL: http://catalog:8081
       SPRING_DATASOURCE_URL: jdbc:sqlite:/app/data/orders.db
     volumes:
-      - order-data:/app/data
+      - ./Order-Service/orders.db:/app/data/orders.db
     depends_on:
       - catalog
 
@@ -30,7 +30,3 @@ services:
     depends_on:
       - catalog
       - order
-
-volumes:
-  catalog-data:
-  order-data:
